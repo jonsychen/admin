@@ -1,0 +1,29 @@
+<!-- jQuery 2.2.3 -->
+<script th:src="@{/plugins/jQuery/jquery-2.2.3.min.js}"></script>
+<!-- Bootstrap 3.3.6 -->
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<!-- FastClick -->
+<script th:src="@{/plugins/fastclick/fastclick.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/dist/js/app.min.js}"></script>
+<!-- Sparkline -->
+<script th:src="@{/plugins/sparkline/jquery.sparkline.min.js}"></script>
+
+<!-- SlimScroll 1.3.0 -->
+<script th:src="@{/plugins/slimScroll/jquery.slimscroll.min.js}"></script>
+
+<!-- DataTables -->
+<script th:src="@{/plugins/datatables/jquery.dataTables.min.js}"></script>
+<script th:src="@{/plugins/datatables/dataTables.bootstrap.min.js}"></script>
+
+<!-- iCheck -->
+<script th:src="@{/plugins/iCheck/icheck.min.js}"></script>
+<script>
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+    });
+</script>

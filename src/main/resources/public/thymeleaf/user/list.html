@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="head"></div>
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../plugins/datatables/dataTables.bootstrap.css"/>
+    <title>用户管理</title>
+</head>
+<script type="text/javascript">
+	function check(){
+		var r=confirm("确定要删除吗？");
+		if (r==true){
+			return true;
+		}else{
+			return false;
+		}
+	}
+</script>
+
+<body class="hold-transition skin-blue sidebar-mini ">
+<div class="wrapper">
+
+    <div th:replace="header"></div>
+    <div th:replace="sidebar"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <div class="box">
+                        <div class="box-header">
+                            <a th:href="@{/user/form}" title="新增帐号"><span class="glyphicon glyphicon-plus"></span></a>
+                        </div>
+
+                        <div class="box-body">
+                            <table id="dataTable" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>帐号名</th>
+                                    <th>邮箱</th>
+                                    <th>状态</th>
+                                    <th>创建时间</th>
+                                    <th style="text-align: center">切换状态</th>
+                                    <th>修改</th>
+                                    <th style="text-align: center">分配角色</th>
+                                    <th style="text-align: center">删除</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="item:${list}">
+                                    <td th:text="${item.username}"></td>
+                                    <td th:text="${item.email}">label</td>
+                                    <td th:text="${item.disabled}?'禁用':'启用'" id="status">status</td>
+                                    <td th:text="${#dates.format(item.createTime,'yyyy/MM/dd HH:mm')}">url</td>
+                                    <td style="text-align: center">
+                                        <span name="lock" title="切换状态"
+                                              th:data="@{/user/{id}/status(disable=${!item.disabled},id=${item.id})}"
+                                              style="cursor: pointer" class="glyphicon glyphicon-lock"></span>
+
+                                    </td>
+                                    <td style="text-align: center">
+                                        <a th:href="@{/user/form(id=${item.id})}"><span class="glyphicon glyphicon-edit"
+                                                                                        title="编辑"></span></a>
+                                    </td>
+                                    <th style="text-align: center"><a th:href="@{/user/{id}/select-role(id=${item.id})}"><span style="cursor: pointer" class="glyphicon glyphicon-transfer" title="授权"></span></a></th>
+
+                                    <td style="text-align: center">
+
+                                        <span name="trash" title="删除" th:data="@{/user/{id}/delete(id=${item.id})}"
+                                              style="cursor: pointer" class="glyphicon glyphicon-trash"></span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+
+</div>
+
+<div th:replace="script"></div>
+
+<!-- page script -->
+<script>
+    $(function () {
+        $('#dataTable').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</script>
+<script th:src="@{/js/list-page.js}"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<header class="main-header">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+        #son2 li.two{
+            display: none;
+        } 
+        #son2:hover li.two{
+            display: block;
+        }
+</style>
+    <!-- Logo -->
+    <a th:href="@{/}" class="logo">
+        <span class="logo-mini"><b>XXX</b>管理平台</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>XXX-</b>管理平台</span>
+    </a>
+
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+            <ul id="son2" class="nav navbar-nav">
+
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="one">
+                    <a th:href="@{/user/profile}">
+                        <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;<span th:text="${user}?${user.username}"></span>
+                    </a>
+                </li>
+                <li class="two">
+                    <a th:href="@{/user/logout}">
+                        <span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;&nbsp;<span th:text="注销"></span>&nbsp;
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+</header>
+

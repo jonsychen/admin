@@ -1,0 +1,56 @@
+server:
+  port: 8080
+  compression:
+    enabled: true
+  connection-timeout: 3000
+
+debug: false
+
+##登录记住我的token加密key
+remember:
+  key: yintong
+##actuator config,actuator运行在一个独立的webappcontext中，see AnnotationConfigEmbeddedWebApplicationContext
+management:
+  context-path: /management
+  security:
+    enabled: false
+
+spring:
+  application:
+    name: admin
+  datasource:
+    url: jdbc:mysql://localhost:3307/admin?characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+          max-active: 10
+          initial-size: 1
+          min-idle: 3
+          max-wait: 60000
+          time-between-eviction-runs-millis: 60000
+          min-evictable-idle-time-millis: 30000
+          test-while-idle: true
+          test-on-borrow: false
+          test-on-return: false
+  cache:
+    guava:
+      spec: maximumSize=500,expireAfterAccess=3600s
+
+ #spring-boot-admin config
+  boot:
+    admin:
+      url: http://localhost:${server.port}${spring.boot.admin.context-path}
+      context-path: /admin
+  thymeleaf:
+      prefix: classpath:/public/thymeleaf/
+      cache: false
+#logging:
+#  level:
+#    root: warn
+#    org:
+#      springframework:
+#        jdbc:
+#          core:
+#            JdbcTemplate: debug

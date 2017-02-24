@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户管理</title>
+    <div th:replace="head"></div>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini ">
+<div class="wrapper">
+
+    <div th:replace="header"></div>
+    <div th:replace="sidebar"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Horizontal Form -->
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">用户管理</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal" th:action="@{${api}}" method="post">
+                            <div class="box-body">
+
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">帐号名</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" name="username" th:value="${acount}? ${acount.username}"
+                                               class="form-control" id="inputEmail3" placeholder=""
+                                               required="required" maxlength="30"/>
+                                    </div>
+                                </div>
+                                <div class="form-group" th:if="${acount==null}">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">密码</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="password" name="password"
+                                               class="form-control" id="inputEmail3" placeholder=""
+                                               required="required" maxlength="20"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">email</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="email" name="email" th:value="${acount}? ${acount.email}"
+                                               class="form-control" id="inputEmail3" placeholder=""
+                                                maxlength="100"/>
+                                    </div>
+                                </div>
+
+
+
+                                <br/><br/>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer" style="text-align: center;">
+                                <button type="submit" class="btn btn-info">Submit</button>
+                            </div>
+                            <!-- /.box-footer -->
+                        </form>
+                    </div>
+                    <!-- /.box -->
+
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <div th:replace="footer"></div>
+</div>
+<!-- ./wrapper -->
+<div th:replace="script"></div>
+
+</body>
+</html>

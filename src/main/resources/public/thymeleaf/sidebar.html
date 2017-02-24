@@ -1,0 +1,25 @@
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+
+            <!--Multilevel-->
+            <li th:if="${not #lists.isEmpty(navs)}" class="treeview active" th:each="nav:${navs}">
+                <a th:href="@{${nav.url}?:'#'}">
+                    <span th:text="${nav.label}">label</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu" th:each="second:${nav.childNodes}">
+                    <li th:name="${second.id}" th:data="${currentMenu}" th:class="(${second.id}==${currentMenu})?'active':''"><a href="#" th:href="@{${second.url}}"><i class="fa fa-circle-o"></i> <span
+                            th:text="${second.label}">label</span></a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

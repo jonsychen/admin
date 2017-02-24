@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>角色授权</title>
+    <div th:replace="head"></div>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini ">
+<div class="wrapper">
+
+    <div th:replace="header"></div>
+    <div th:replace="sidebar"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Horizontal Form -->
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">角色授权</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form class="form-horizontal" th:action="@{${api}}" method="post">
+                            <div class="box-body">
+
+                                <table id="dataTable" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>&nbsp;</th>
+                                        <th>权限名称</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="item:${list}">
+                                        <td>
+
+                                            <input type="checkbox" th:checked="${item.checked}" th:name="rid" th:value="${item.rid}"/></td>
+                                        <td th:text="${item.label}">权限名称</td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <br/><br/>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer" style="text-align: center;">
+
+                                <button type="submit" class="btn btn-info">Submit</button>
+                            </div>
+                            <!-- /.box-footer -->
+                        </form>
+                    </div>
+                    <!-- /.box -->
+
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <div th:replace="footer"></div>
+</div>
+<!-- ./wrapper -->
+<div th:replace="script"></div>
+
+</body>
+</html>
