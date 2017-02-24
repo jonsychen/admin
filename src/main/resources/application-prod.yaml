@@ -1,7 +1,7 @@
 server:
-  port: 80
+  port: 8080
   compression:
-      enabled: true
+    enabled: true
   connection-timeout: 3000
 
 debug: false
@@ -20,7 +20,7 @@ spring:
   application:
     name: admin
   datasource:
-     url: jdbc:mysql://122.144.198.70:3307/m2m?characterEncoding=utf-8
+     url: jdbc:mysql://localhost:3307/admin?characterEncoding=utf-8
     username: root
     password: shadowsocks
     driver-class-name: com.mysql.jdbc.Driver

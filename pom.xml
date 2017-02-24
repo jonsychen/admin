@@ -5,11 +5,11 @@
 
 	<groupId>com.admin</groupId>
 	<artifactId>admin</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<packaging>jar</packaging>
 
 	<name>admin</name>
-	<description>baibu car-wifi admin manager</description>
+	<description>admin manager</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
